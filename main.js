@@ -14,15 +14,15 @@ require('events').EventEmitter.prototype._maxListeners = 100;
 var hangman = {
   wordBank: Game.newWord.wordList,
   guessesRemaining: 10,
-  //empty array to hold letters guessed by user. And checks if the user guessed the letter already
+  
   guessedLetters: [],
-  //index to display graphic
+  
   display: 0,
   currentWord: null,
-  //asks user if they are ready to play
+ 
   startGame: function() {
     var that = this;
-    //clears guessedLetters before a new game starts if it's not already empty.
+    
     if(this.guessedLetters.length > 0){
       this.guessedLetters = [];
     }
@@ -38,16 +38,16 @@ var hangman = {
         console.log("All good but thank you");
       }
     })},
-  //if they want to play starts new game.
+  
   newGame: function() {
     if(this.guessesRemaining === 10) {
       console.log("Okay! Here we go!");
       console.log('*****************');
-      //generates random number based on the wordBank
+      
       var randNum = Math.floor(Math.random()*this.wordBank.length);
       this.currentWord = new Word(this.wordBank[randNum]);
       this.currentWord.getLets();
-      //displays current word as blanks.
+      
       console.log(this.currentWord.wordRender());
       this.keepPromptingUser();
     } else{
@@ -60,7 +60,7 @@ var hangman = {
   },
   keepPromptingUser : function(){
     var that = this;
-    //asks player for a letter
+    
     inquirer.prompt([{
       name: "chosenLtr",
       type: "input",
@@ -73,21 +73,21 @@ var hangman = {
         }
       }
     }]).then(function(ltr) {
-      //toUpperCase because words in word bank are all caps
+     
       var letterReturned = (ltr.chosenLtr).toUpperCase();
-      //adds to the guessedLetters array if it isn't already there
+      
       var guessedAlready = false;
         for(var i = 0; i<that.guessedLetters.length; i++){
           if(letterReturned === that.guessedLetters[i]){
             guessedAlready = true;
           }
         }
-        //if the letter wasn't guessed already run through entire function, else reprompt user
+        
         if(guessedAlready === false){
           that.guessedLetters.push(letterReturned);
 
           var found = that.currentWord.checkIfLetterFound(letterReturned);
-          //if none were found tell user they were wrong
+          
           if(found === 0){
             console.log('Nope! You guessed wrong.');
             that.guessesRemaining--;
@@ -102,13 +102,13 @@ var hangman = {
             console.log("Letters guessed: " + that.guessedLetters);
           } else{
             console.log('Yes! You guessed correctly!');
-              //checks to see if user won
+              
               if(that.currentWord.didWeFindTheWord() === true){
                 console.log(that.currentWord.wordRender());
                 console.log('Congratulations! You won!!!');
-                // that.startGame();
+                
               } else{
-                // display the user how many guesses remaining
+                
                 console.log('Guesses remaining: ' + that.guessesRemaining);
                 console.log(that.currentWord.wordRender());
                 console.log('\n*******************');
