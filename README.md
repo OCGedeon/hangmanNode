@@ -1,12 +1,12 @@
-# hangmanNode
-# Hangman Terminal
+#Terminal Hangman 
 
+![Screenshot](hangman.png)
 
 <div>
 
 ```html
 
-    Welcome to my Hangman in Node/Terminal homework assignment! 
+    Welcome to my Hangman in Node/Terminal Game!
         
     This is a hangman game played through Node.js and empowered using JavaScript constructors. It was a very fun and challenging assignment. 
     
@@ -16,12 +16,12 @@
 
 ```
 
-`Overview`
+### Overview
 
-```css
+
 PLEASE NOTE: There are required installations or update required to view and play this file/game.
 
-Getting Started
+### Getting Started
 
     - Clone repo.
     - Install - Inquirer NPM Package - https://www.npmjs.com/package/inquireris-letter 
@@ -29,7 +29,7 @@ Getting Started
     - Run command in Terminal or Gitbash 'npm install'
     - Run command 'node main.js' to get started playing game (Hint: Monters University)
 
-```
+
 
 ### Task Requirements:
 
@@ -66,7 +66,7 @@ Word.js should only require Letter.js
 HINT: Write Letter.js first and test it on its own before moving on, then do the same thing with Word.js
 HINT: If you name your letter's display function toString, JavaScript will call that function automatically whenever casting that object to a string (check out this example: https://jsbin.com/facawetume/edit?js,console)
 
---------------------END----------------------------
+
 
 ```
 
